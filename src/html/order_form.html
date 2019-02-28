@@ -1,8 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-    </body>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layout 后台大布局 - Layui</title>
+  <link rel="stylesheet" href="../assert/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">BG后台管理系统</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退了</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">商品管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">添加商品</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">用户列表</a></dd>
+            <dd><a href="javascript:;">添加用户</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">订单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">订单列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <table class="layui-table" lay-data="{width: 1091, height:500, url:'../routers/api/FeHelper-20190228135312.json', page:true, id:'idTest'}" lay-filter="demo">
+  <thead>
+    <tr>
+      <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+      <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
+      <th lay-data="{field:'username', width:120}">商品名称</th>
+      <th lay-data="{field:'sex', width:80, sort: true}">价格</th>
+      <th lay-data="{field:'city', width:80}">数量</th>
+      <th lay-data="{field:'sign', width:100}">运费</th>
+      <th lay-data="{field:'experience', width:120, sort: true}">商品总额</th>
+      
+      <th lay-data="{field:'classify', width:120,sort: true}">订单总额</th>
+      <th lay-data="{field:'wealth', width:135, sort: true}">下单时间</th>
+      <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}"></th>
+    </tr>
+  </thead>
+</table>
+ 
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+               
+          
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  </div>
+</div>
+<script src="../assert/layui/layui.js"></script>
+<script src="../js/order_form.js"></script>
+</body>
 </html>
