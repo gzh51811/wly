@@ -6,11 +6,7 @@ const koaBody = require('koa-body');
 var router = new Router(); 
 
 // 引入页面路由
-const loginRouter = require('./login');
-const goodslistRouter = require('./goodslist');
-const userEditRouter = require('./user');
 const orderFormRouter = require('./orderForm');
-
 
 router.use(koaBody({
     // 支持formdata
@@ -32,9 +28,6 @@ router.use(koaBody({
     }
 }));
 
-router.use('/login',loginRouter.routes())
-router.use('/goodslist',goodslistRouter.routes())
-router.use('/user',userRouter.routes())
 router.use('/orderForm',orderFormRouter.routes())
 
 module.exports = router;

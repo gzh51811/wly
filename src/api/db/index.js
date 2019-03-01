@@ -61,9 +61,17 @@ exports.update = async (colName,query,newData)=>{
 exports.find = async (colName,query)=>{
 
     let {db,client} = await connect();
-
     let collection = db.collection(colName);
     let res = await collection.find(query).toArray();
+    client.close();
+
+    // 返回查询结果
+    return res;
+}
+exports.find2 = async (colName,query,page,limit)=>{
+    let {db,client} = await connect();
+    let collection = db.collection(colName);
+    let res = await collection.find(query).skip(page).limit(limit).toArray();
     client.close();
 
     // 返回查询结果
