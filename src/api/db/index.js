@@ -22,8 +22,6 @@ async function connect(){
 exports.insert = async (colName,data)=>{
 
     let {db,client} = await connect();
-
-
     // console.log('client',client)
     // console.log('db',db)
     let collection = db.collection(colName);

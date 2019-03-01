@@ -7,6 +7,8 @@ var router = new Router();
 
 // 引入页面路由
 const orderFormRouter = require('./orderForm');
+const listitemRouter = require('./listitem');
+const listEditRouter = require('./listEdit');
 
 router.use(koaBody({
     // 支持formdata
@@ -29,5 +31,7 @@ router.use(koaBody({
 }));
 
 router.use('/orderForm',orderFormRouter.routes())
+router.use('/listitem',listitemRouter.routes())
+router.use('/listEdit',listEditRouter.routes())
 
 module.exports = router;

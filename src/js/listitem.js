@@ -14,12 +14,34 @@
           layer.confirm('真的删除行么', function(index){
             obj.del();
             layer.close(index);
+            let xhr = new XMLHttpRequest();
+          xhr.onload = function(){
+            console.log(xhr.responseText);
+          }
+          xhr.open("post","/listitem");
+          xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+          xhr.send(`id=${data.id}`);
           });
         } else if(obj.event === 'edit'){
-          layer.alert('编辑行：<br>'+ JSON.stringify(data))
+          location.href = `listEdit.html?id=${data.id}`;
+          // layer.alert('编辑行：<br>'+ JSON.stringify(data))
         }
       });
-      
+      table.render({
+        elem: '.layui-table'
+        ,id : 'idTest'
+        ,url: '/listitem'
+        ,cols: [[
+          {checkbox: true, fixed: "left"}
+          ,{field:'id', title: 'ID', width:170,  fixed: true}
+          ,{field:'type', title: '商品分类', width:400}
+          ,{field:'joinTime', title: '添加时间',  width:240}
+          ,{fixed:"right",align:"center",width:217,toolbar:"#barDemo"}
+        ]]
+        ,page: true
+        ,height: 466
+        ,width : 1091
+    });
       var $ = layui.$, active = {
         getCheckData: function(){ //获取选中数据
           var checkStatus = table.checkStatus('idTest')
@@ -42,4 +64,8 @@
         active[type] ? active[type].call(this) : '';
       });
         });
+    let layuiAdd = document.getElementsByClassName("layui-btn-warm")[0];
+    layuiAdd.onclick = function(){
+      location.href = "listEdit.html";
+    }
  })()

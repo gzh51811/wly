@@ -18,9 +18,8 @@ router.get('/',async (ctx,next)=>{
     let {page,limit}=ctx.query;
     let all = (page-1)*limit;
     limit=limit*1;
-    console.log(all,limit);
-    let res1 = await db.find('orderForm');
-    let res2 = await db.find2('orderForm',{},all,limit);
+    let res1 = await db.find('classifiedItemForm');
+    let res2 = await db.find2('classifiedItemForm',{},all,limit);
 
     // res = res;
     ctx.body={
@@ -51,8 +50,7 @@ router.post('/',async (ctx,next)=>{
     // 解构
     let {id} = ctx.request.body;
     id=id*1;
-    let res = await db.delete('orderForm',{id});
-    // console.log(res)
+    let res = await db.delete('classifiedItemForm',{id});
     // res = res;
     ctx.body=res;
     // if(res){
@@ -68,8 +66,6 @@ router.post('/',async (ctx,next)=>{
     //         msg:'fail'
     //     }
     // }
-
-    
 
     // 存入数据库
 })
