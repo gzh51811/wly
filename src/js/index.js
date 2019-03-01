@@ -5,8 +5,10 @@ const koaBody = require('koa-body');
 // 创建路由
 var router = new Router();
 
-// 引入页面路由
+// 引入页面路由  路由的不同走向不同的执行
+
 const loginRouter = require('./login');
+const userlistRouter = require('./userlist_login');
 
 router.use(koaBody({
     // 支持formdata
@@ -29,5 +31,6 @@ router.use(koaBody({
 }));
 
 router.use('/login', loginRouter.routes())
+router.use('/userlist_login', userlistRouter.routes())
 
 module.exports = router;

@@ -5,7 +5,6 @@ const db = require('./_index');
 // 创建路由
 var router = new Router();
 
-
 /**
  * ctx
  */
@@ -15,10 +14,9 @@ router.post('/', async (ctx, next) => {
     //
     password = password*1;//把得到的密码装换成整型
     let res = await db.find('user', { username, password}); 
-    console.log(username, password);
 
     res = res[0];//res就是你查询得到用户的所有信息
-    console.log(res);
+
     if (res) {
         ctx.body = {
             //把用户名，与权限值返回主页
