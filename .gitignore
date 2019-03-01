@@ -1,2 +1,5 @@
 7.txt
 node_modules
+/node_modules
+/api
+/router
