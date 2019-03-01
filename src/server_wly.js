@@ -2,7 +2,7 @@ const Koa = require('koa');
 const static = require('koa-static');
 
 // 路由
-const routers = require('./api/routers');
+const routers = require('./api/routers/index_wly.js');
 
 // 创建koa应用
 const app = new Koa();//app.context

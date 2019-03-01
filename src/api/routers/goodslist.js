@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 
-const db = require('../db');
+const db = require('../db/index_wly.js');
 
 // 创建路由
 var router = new Router();
