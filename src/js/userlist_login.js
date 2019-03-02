@@ -35,13 +35,10 @@ router.get('/', async (ctx, next) => {
     // 解构
     //get传来的位置就在query 而post发送过来的在request下body
     let {username} = ctx.query;
-
     //查询删除
     // console.log(username);
     let res = await db.delete('1811',{username});
-
         ctx.body = res;
 })
-
 module.exports = router;
 
