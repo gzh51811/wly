@@ -9,6 +9,8 @@ var router = new Router();
 const orderFormRouter = require('./orderForm');
 const listitemRouter = require('./listitem');
 const listEditRouter = require('./listEdit');
+const goodslistRouter = require('./goodslist');
+const goodsAddRouter = require('./goodsAdd');
 
 router.use(koaBody({
     // 支持formdata
@@ -33,5 +35,7 @@ router.use(koaBody({
 router.use('/orderForm',orderFormRouter.routes())
 router.use('/listitem',listitemRouter.routes())
 router.use('/listEdit',listEditRouter.routes())
+router.use('/goodslist',goodslistRouter.routes())
+router.use('/goodsAdd',goodsAddRouter.routes())
 
 module.exports = router;
