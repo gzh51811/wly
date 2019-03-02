@@ -6,39 +6,37 @@ var router = new Router();
 
 
 //页面渲染
-router.post('/', async (ctx, next) => {
+router.get('/', async (ctx, next) => {
     // 解构
-    let {oa} = ctx.request.body;
+    // let {oa} = ctx.request.body;
     //转换
-    oa = oa*1;
+    // oa = oa*1;
     //查询
-    let res = await db.find('1811', {oa});
+    let res = await db.find('user', {oa:0});
     if (res) {
         //把查询到的权限为普通用户的信息返回前端
-        ctx.body= res;
+        ctx.body = {
+            "code": 0,
+            "msg": "",
+            "data": res
+        }
     } else {
         ctx.body = {
             code: 100,
             msg: 'fail'
         }
     }
-
-
-
-
-
-
 })
 
 //删除功能
-router.get('/', async (ctx, next) => {
+router.post('/', async (ctx, next) => {
     // 解构
     //get传来的位置就在query 而post发送过来的在request下body
-    let {username} = ctx.query;
+    let {username} = ctx.request.body;
     //查询删除
     // console.log(username);
-    let res = await db.delete('1811',{username});
-        ctx.body = res;
+    let res = await db.delete('user',{username});
+        ctx.body =res;
 })
 module.exports = router;
 

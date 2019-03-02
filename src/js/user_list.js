@@ -1,66 +1,29 @@
 $(function(){
-    //发送ajax请求查询数据
-    let xhr = new XMLHttpRequest();
-    xhr.onload = () => {
 
-        if (xhr.status == 200) {
-            let res = JSON.parse(xhr.responseText);
-            var arr = res.map(function (item) {
-                return ` <tr data-index="0" class="cr">    
-                                                    <td data-field="1" data-key="8-0-1" class="layui-table-col-special">
-                                                        <div class="layui-table-cell laytable-cell-8-0-1 laytable-cell-checkbox">
-                                                            <input type="checkbox" name="layTableCheckbox" lay-skin="primary">
-                                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                                                <i class="layui-icon layui-icon-ok"></i>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="city" data-key="8-0-4" class="yonghu">${item.username}</td>
-                                                    <td data-field="id" data-key="8-0-2" class="">
-                                                        <div class="layui-table-cell laytable-cell-8-0-2 ">${item.sex}</div>
-                                                    </td>
-                                                    <td data-field="username" data-key="8-0-3" class="">
-                                                        <div class="layui-table-cell laytable-cell-8-0-3 _chengshi">${item.address}</div>
-                                                    </td>                                                                            
-                                                    <td data-field="wealth" data-key="8-0-5" data-minwidth="120" class="qianming">
-                                                        <div class="layui-table-cell laytable-cell-8-0-5">${item.signature}</div>
-                                                    </td>
-                                                    <td data-field="sex" data-key="8-0-6" class="zhiye">
-                                                        <div class="layui-table-cell laytable-cell-8-0-6">
-                                                            <input type="checkbox" name="sex" lay-skin="switch" lay-filter="test-table-sexDemo" class="zhiye">
-                                                            <span>${item.profession}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="lock" data-key="8-0-7" data-content="" class="pingfen">
-                                                        <div class="layui-table-cell laytable-cell-8-0-7">
-                                                            <input type="checkbox" name="lock" title="评分" lay-filter="test-table-lockDemo">
-                                                                <span>${item.grade}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="lock" data-key="8-0-7" data-content="" class="_data">
-                                                        <div class="layui-table-cell laytable-cell-8-0-7">
-                                                            <input type="checkbox" name="lock"  lay-filter="test-table-lockDemo">
-                                                            <span>${item.regdata}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="10" data-key="1-0-10" align="center" data-off="true" class="layui-table-col-special">
-                                                        <div class="layui-table-cell laytable-cell-1-0-10">
-                                                            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                                                            <a class="layui-btn layui-btn-danger layui-btn-xs dl" lay-event="del">删除</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>`;
-            }).join('');
+layui.use('table', function(){
+  var table = layui.table;
 
-            $('#tbd').html(arr);
+    //监听表格复选框选择
+    table.on('checkbox(demo)', function (obj) {
+        // console.log(obj.data);
+        var dels = [];
+        dels.push(obj.data.username);
+        console.log(dels);
+    });
+   
+    //监听工具条
+    table.on('tool(demo)', function (obj) {
+        var data = obj.data;
+        if (obj.event === 'detail') {
+            layer.msg('ID：' + data.username + ' 的查看操作');
+        } else if (obj.event === 'del') {
 
-            //删除功能
-            $('.dl').on('click',function(){
-                var dl =  confirm('您真的不要我么？');
-                //得到用户名
-                var x = $(this).parent().parent().parent().children('.yonghu').html();
-               if(dl){
+            layer.confirm('真的删除行么', function (index) {
+                obj.del();
+                layer.close(index);
+
                     // 发送ajax请求
+                    //删除功能
                    let xhr = new XMLHttpRequest();
                    xhr.onload = () => {
                        if (xhr.status == 200) {
@@ -68,23 +31,63 @@ $(function(){
                            console.log(fanhui);
                        }
                    }
-                   xhr.open('get', '/userlist_login?username='+x, true);
-                   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                   xhr.send();
-
-
-               }
-            });
+                xhr.open('post', '/userlist_login', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                var datas = 'username=' + data.username;
+                xhr.send(datas);
 
            
+               
+            });
+        } else if (obj.event === 'edit') {
+            layer.alert('编辑行：<br>' + JSON.stringify(data))
 
         }
-    }
-    xhr.open('post', '/userlist_login', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    let data = 'oa=0';
-    xhr.send(data);
+    }); 
+
+    //页面渲染，自动layui自带js代码生成表格
+  table.render({
+      elem: '.layui-table'
+      , width: 892,
+      height: 332,
+      url: '/userlist_login',
+      id: 'idTest',
+    cols: [[
+        { type: 'checkbox', width: 80,}
+      ,{field:'username', width:80, title: '用户名'}
+      ,{field:'sex', width:80, title: '性别', sort: true}
+      ,{field:'address', width:80, title: '城市'}
+        , { field: 'signature', title: '签名', width: 80, }
+      ,{field:'profession', width:80, title: '职业'}
+      ,{field:'grade', width:80, title: '评分', sort: true}
+      ,{field:'regdata', title: '注册日期',minwidth:100}
+        ,{ fixed: "right", align: "center", width: 120, toolbar: "#barDemo" }
+    ]]
+    ,page: true
+  });
 
 
-    
+
+    //**点击删除获取到所有被选中的用户名
+    var $ = layui.$, active = {
+        getCheckData: function () { //获取选中数据
+            var checkStatus = table.checkStatus('idTest')
+                , data = checkStatus.data;
+            layer.alert(JSON.stringify(data));
+        }
+    };
+
+    $('.layui-btn-group .layui-btn').on('click', function () {
+
+        var type = $(this).data('type');
+        var a1 =  active[type] ? active[type].call(this) : '';
+    });
+
+
+
+});
+
+
+
+
 });

@@ -5,12 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>用户列表</title>
+
     <link rel="stylesheet" href="../assert/layui/css/layui.css">
-    <script src="../assert/layui/layui.js"></script>
-    <link rel="stylesheet" href="../css/user_list.css">
-    <script src="../assert/lib/jquery-1.10.1.min.js"></script>
-    <script src="../js/user_list.js"></script>
-    
+
 </head>
 
 <body class="layui-layout-body">
@@ -18,19 +15,6 @@
         <div class="layui-header">
             <div class="layui-logo">BG后台管理系统</div>
             <!-- 头部区域（可配合layui已有的水平导航） -->
-            <!--  <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="">商品管理</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
-        <dl class="layui-nav-child">
-          <dd><a href="">邮件管理</a></dd>
-          <dd><a href="">消息管理</a></dd>
-          <dd><a href="">授权管理</a></dd>
-        </dl>
-      </li>
-    </ul> -->
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:;">
@@ -96,239 +80,23 @@
         </div>
 
         <div class="layui-body">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">商品管理</a>
+                <a>
+                    <cite>商品列表</cite>
+                </a>
+            </span>
             <!-- 内容主体区域 -->
-            <div style="padding: 15px;width: 1003px;">内容主体区域
-<!-- 1111111111111111111111111111111111111111 -->
-        <div class="layui-fluid">
-            <div class="layui-row layui-col-space15">
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-header">
-                            <button class="layui-btn">
-                                <i class="layui-icon"></i>
-                                添加
-                            </button>
-                        <button class="layui-btn"style="background: #999">
-                            <i class="layui-icon"></i>
-                            删除
-                        </button>
-                        </div>
-                        <div class="layui-card-body">
-                            <table class="layui-hide" id="test-table-form"></table>
-                            <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-8" lay-id="test-table-form"
-                                style="">
-                                <div class="layui-table-box">
-                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
-                                            <thead>
-                                                <tr>
-                                                     <th data-field="1" data-key="8-0-1" data-unresize="true" class=" layui-table-col-special">
-                                                        <div class="layui-table-cell laytable-cell-8-0-1 laytable-cell-checkbox">
-                                                            <input type="checkbox" name="layTableCheckbox">
-                                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                                                <i class="layui-icon layui-icon-ok"></i>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                     
-                                                    <th data-field="username" data-key="8-0-3" class="yonghu">
-                                                        <div class="layui-table-cell laytable-cell-8-0-3">
-                                                            <span>用户名</span>
-                                                        </div>
-                                                    </th>
-                                                    <th data-field="id" data-key="8-0-2" data-unresize="true" class=" layui-unselect">
-                                                        <div class="layui-table-cell laytable-cell-8-0-2">
-                                                            <span>性别</span>
-                                                            <span class="layui-table-sort layui-inline">
-                                                                <i class="layui-edge layui-table-sort-asc" title="升序"></i>
-                                                                <i class="layui-edge layui-table-sort-desc" title="降序"></i>
-                                                            </span>
-                                                        </div>
-                                                    </th>
-                                                   
-                                                    <th data-field="city" data-key="8-0-4" class="">
-                                                        <div class="layui-table-cell laytable-cell-8-0-4 chengshi">
-                                                            <span>城市</span>
-                                                        </div>
-                                                    </th>
-                                                    <th data-field="wealth" data-key="8-0-5" data-minwidth="120" class=" layui-unselect _qianming">
-                                                        <div class="layui-table-cell laytable-cell-8-0-5">
-                                                            <span>签名</span>
-                                                        </div>
-                                                    </th>
-                                                    <th data-field="sex" data-key="8-0-6" data-unresize="true" class="_zhiye">
-                                                        <div class="layui-table-cell laytable-cell-8-0-6">
-                                                            <span>职业</span>
-                                                        </div>
-                                                    </th>
-
-                                                    <th data-field="wealth" data-key="8-0-5" data-minwidth="120" class=" layui-unselect _pingfen">
-                                                        <div class="layui-table-cell laytable-cell-8-0-5">
-                                                            <span>评分</span>
-                                                            <span class="layui-table-sort layui-inline">
-                                                                <i class="layui-edge layui-table-sort-asc" title="升序"></i>
-                                                                <i class="layui-edge layui-table-sort-desc" title="降序"></i>
-                                                            </span>
-                                                        </div>
-                                                    </th>
-                                                    <th data-field="wealth" data-key="8-0-5" data-minwidth="120" class="data layui-unselect">
-                                                        <div class="layui-table-cell laytable-cell-8-0-5">
-                                                            <span>注册时间</span>
-                                                            <span class="layui-table-sort layui-inline">
-                                                                <i class="layui-edge layui-table-sort-asc" title="升序"></i>
-                                                                <i class="layui-edge layui-table-sort-desc" title="降序"></i>
-                                                            </span>
-                                                        </div>
-                                                    </th>
-                                                    <th data-field="lock" data-key="8-0-7" data-unresize="true" class="caozuo">
-                                                        <div class="layui-table-cell laytable-cell-8-0-7">
-                                                            <span>操作</span>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                    <!-- </div> -->
-                                    <div class="layui-table-body layui-table-main">
-                                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
-                                            <tbody id="tbd">
-                                                <!-- <tr data-index="0" class="">    
-                                                    <td data-field="1" data-key="8-0-1" class="layui-table-col-special">
-                                                        <div class="layui-table-cell laytable-cell-8-0-1 laytable-cell-checkbox">
-                                                            <input type="checkbox" name="layTableCheckbox" lay-skin="primary">
-                                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                                                <i class="layui-icon layui-icon-ok"></i>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="city" data-key="8-0-4" class="yonghu">
-                                                        <div class="layui-table-cell laytable-cell-8-0-4">hxh</div>
-                                                    </td>
-                                                    <td data-field="id" data-key="8-0-2" class="">
-                                                        <div class="layui-table-cell laytable-cell-8-0-2 ">男</div>
-                                                    </td>
-                                                    <td data-field="username" data-key="8-0-3" class="">
-                                                        <div class="layui-table-cell laytable-cell-8-0-3 _chengshi">广州</div>
-                                                    </td>                                                                            
-                                                    <td data-field="wealth" data-key="8-0-5" data-minwidth="120" class="qianming">
-                                                        <div class="layui-table-cell laytable-cell-8-0-5">U-ccc</div>
-                                                    </td>
-                                                    <td data-field="sex" data-key="8-0-6" class="zhiye">
-                                                        <div class="layui-table-cell laytable-cell-8-0-6">
-                                                            <input type="checkbox" name="sex" lay-skin="switch" lay-filter="test-table-sexDemo" class="zhiye">
-                                                            <span>死肥宅</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="lock" data-key="8-0-7" data-content="" class="pingfen">
-                                                        <div class="layui-table-cell laytable-cell-8-0-7">
-                                                            <input type="checkbox" name="lock" title="评分" lay-filter="test-table-lockDemo">
-                                                                <span>250</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="lock" data-key="8-0-7" data-content="" class="_data">
-                                                        <div class="layui-table-cell laytable-cell-8-0-7">
-                                                            <input type="checkbox" name="lock"  lay-filter="test-table-lockDemo">
-                                                            <span>2007-11-22</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="10" data-key="1-0-10" align="center" data-off="true" class="layui-table-col-special">
-                                                        <div class="layui-table-cell laytable-cell-1-0-10">
-                                                            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                                                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-                                                        </div>
-                                                    </td>
-                                                </tr> -->
-
-                                           
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="layui-table-page">
-                                    <!-- <div id="layui-table-page8"> -->
-                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-13" style="position: absolute;left: 213px;">
-                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">
-                                                <i class="layui-icon"></i>
-                                            </a>
-                                            <span class="layui-laypage-curr">
-                                                <em class="layui-laypage-em"></em>
-                                                <em>1</em>
-                                            </span>
-                                            <a href="javascript:;" data-page="2">2</a>
-                                            <a href="javascript:;" data-page="3">3</a>
-                                            <span class="layui-laypage-spr">…</span>
-                                            <a href="javascript:;" class="layui-laypage-last" title="尾页" data-page="100">100</a>
-                                            <a href="javascript:;" class="layui-laypage-next" data-page="2">
-                                                <i class="layui-icon"></i>
-                                            </a>
-                                            <span class="layui-laypage-skip">到第
-                                                <input type="text" min="1" value="1" class="layui-input">页
-                                                <button type="button" class="layui-laypage-btn">确定</button>
-                                            </span>
-                                            <span class="layui-laypage-count">共 1000 条</span>
-                                            <span class="layui-laypage-limits">
-                                                <select lay-ignore="">
-                                                    <option value="10" selected="">10 条/页</option>
-                                                    <option value="20">20 条/页</option>
-                                                    <option value="30">30 条/页</option>
-                                                    <option value="40">40 条/页</option>
-                                                    <option value="50">50 条/页</option>
-                                                    <option value="60">60 条/页</option>
-                                                    <option value="70">70 条/页</option>
-                                                    <option value="80">80 条/页</option>
-                                                    <option value="90">90 条/页</option>
-                                                </select>
-                                            </span>
-                                            
-                                    </div>
-                                </div>
-                                <style>
-                                    .laytable-cell-8-0-0 {
-                                        width: 40px;
-                                    }
-        
-                                    .laytable-cell-8-0-1 {
-                                        width: 48px;
-                                    }
-        
-                                    .laytable-cell-8-0-2 {
-                                        width: 100px;
-                                    }
-        
-                                    .laytable-cell-8-0-3 {}
-        
-                                    .laytable-cell-8-0-4 {}
-        
-                                    .laytable-cell-8-0-5 {}
-        
-                                    .laytable-cell-8-0-6 {
-                                        width: 85px;
-                                    }
-        
-                                    .laytable-cell-8-0-7 {
-                                        width: 110px;
-                                    }
-                                </style>
-                            </div>
-        
-                            <script type="text/html" id="test-table-switchTpl">
-                      <!-- 这里的 checked 的状态只是演示 -->
-                      <input type="checkbox" name="sex" lay-skin="switch" lay-text="女|男" lay-filter="test-table-sexDemo"
-                       value="{{ d.id }}" data-json="{{ encodeURIComponent(JSON.stringify(d)) }}" {{ d.id == 10003 ? 'checked' : '' }}>
-                    </script>
-        
-                            <script type="text/html" id="test-table-checkboxTpl">
-                      <!-- 这里的 checked 的状态只是演示 -->
-                      <input type="checkbox" name="lock" title="锁定" lay-filter="test-table-lockDemo" 
-                       value="{{d.id}}" data-json="{{ encodeURIComponent(JSON.stringify(d)) }}" {{ d.id == 10006 ? 'checked' : '' }}>
-                    </script>
-        
-                        </div>
-                    </div>
+            <div style="padding: 15px;">
+                <div class="layui-btn-group  demoTable">
+                    <button class="layui-btn">增加</button>
+                    <button class="layui-btn" data-type="getCheckData">删除</button>
                 </div>
-            </div>
-        </div>
+                <table class="layui-table"  lay-filter="demo"></table>
 
 
-<!-- 1111111111111111111111111111111111111111 -->
+                
             </div>
         </div>
 
@@ -337,20 +105,23 @@
             © layui.com - 底部固定区域
         </div>
     </div>
+    <script type="text/html" id="barDemo">       
+            <button class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon"></i></button>       
+            <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del"><i class="layui-icon"></i></button>     
+        </script>
+    <script src="../assert/lib/jquery-1.10.1.min.js"></script>
     <script src="../assert/layui/layui.js"></script>
+    <script src="../js/user_list.js"></script>
     <script>
-       (()=>{
-            //JavaScript代码区域
-           layui.use('element', function () {
-               var element = layui.element;
-
-           });
-           let tbd = document.querySelector('#tbd');
-
-         
-       })();
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
+            //监听导航点击
+            element.on('nav(filter)', function (elem) {
+                console.log(elem); //得到当前点击的DOM对象
+            });
+        });
     </script>
 </body>
-
 
 </html>
