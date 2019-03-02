@@ -1,7 +1,7 @@
 [
         {
             "id": 10000,
-            "name": "user0",
+            "type": "手机",
             "price": 4000,
             "num": 1,
             "carriage": 20,
@@ -11,7 +11,7 @@
         },
         {
             "id": 10001,
-            "name": "user1",
+            "type": "电脑",
             "price": 4000,
             "num": 1,
             "carriage": 20,
@@ -21,7 +21,7 @@
         },
         {
             "id": 10002,
-            "name": "user2",
+            "type": "衣服",
             "price": 4000,
             "num": 1,
             "carriage": 20,
@@ -31,7 +31,7 @@
         },
         {
             "id": 10005,
-            "name": "user5",
+            "type": "鞋类",
             "price": 4000,
             "num": 1,
             "carriage": 20,
@@ -41,7 +41,7 @@
         },
         {
             "id": 10006,
-            "name": "user6",
+            "type": "水杯",
             "price": 4000,
             "num": 1,
             "carriage": 20,
@@ -51,7 +51,7 @@
         },
         {
             "id": 10009,
-            "name": "user9",
+            "type": "游戏机",
             "price": 4000,
             "num": 1,
             "carriage": 20,
@@ -61,7 +61,7 @@
         },
         {
             "id": 10027,
-            "name": "user27",
+            "type": "零食",
             "price": "40007",
             "num": "17",
             "carriage": 20,
@@ -71,7 +71,7 @@
         },
         {
             "id": 10028,
-            "name": "user28",
+            "type": "床类",
             "price": "40008",
             "num": "18",
             "carriage": 20,

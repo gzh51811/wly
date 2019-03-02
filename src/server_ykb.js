@@ -3,7 +3,7 @@ const static = require('koa-static');
 
 // 路由
 
-const routers = require('./js/index');
+const routers = require('./api/routers');
 
 
 // 创建koa应用
