@@ -69,12 +69,13 @@ exports.find = async (colName,query)=>{
     // 返回查询结果
     return res;
 }
-exports.find2 = async (colName,query)=>{
+//分页功能
+exports.find2 = async (colName,query,num,limit)=>{
 
     let {db,client} = await connect();
 
     let collection = db.collection(colName);
-    let res = await collection.find(query).limit(10).toArray();
+    let res = await collection.find(query).skip(num).limit(limit).toArray();
     client.close();
 
     // 返回查询结果
