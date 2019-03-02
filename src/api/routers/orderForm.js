@@ -12,6 +12,19 @@ var router = new Router();
 /**
  * ctx
  */
+router.put('/',async (ctx,next)=>{
+    // 解构
+    // let {username,password,mdl} = ctx.request.body;
+    let {id}=ctx.query;
+    // let all = (page-1)*limit;
+    // limit=limit*1;
+    // console.log(all,limit);
+    let res3 = await db.update('orderForm',{id},{$set:ctx.query});
+    // res = res;
+    ctx.body=res3;
+
+    // 存入数据库
+})
 router.get('/',async (ctx,next)=>{
     // 解构
     // let {username,password,mdl} = ctx.request.body;
@@ -50,7 +63,6 @@ router.get('/',async (ctx,next)=>{
 router.post('/',async (ctx,next)=>{
     // 解构
     let {id} = ctx.request.body;
-    id=id*1;
     let res = await db.delete('orderForm',{id});
     // console.log(res)
     // res = res;
