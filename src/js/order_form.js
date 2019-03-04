@@ -52,13 +52,13 @@
     });
     table.render({
       elem: '.layui-table'
-      ,url: '/orderForm'
+      ,url: '/orderForm/all'
       ,cols: [[
         {checkbox: true, fixed: true}
         ,{field:'id', title: 'ID', width:80, sort: true, fixed: true}
         ,{field:'name', title: '商品名称', width:120}
         ,{field:'price', title: '价格', width:80, sort: true}
-        ,{field:'num', title: '数量', edit:"text", width:80}
+        ,{field:'num', title: '数量',  width:80}
         ,{field:'carriage', title: '运费',  width:80}
         ,{field:'allPri', title: '商品总额', sort: true, width:120}
         ,{field:'carPri', title: '订单总额', sort: true,width:120}
@@ -85,6 +85,25 @@
     // table.render({
     // elem: '.layui-table'});
     var $ = layui.$, active = {
+      reload: function(){
+        var demoReload = $('#demoReload');
+        //执行重载
+        // table.reload('idTest', {
+        //   url: '/api/table/search'
+        //   ,where: {} //设定异步数据接口的额外参数
+        //   //,height: 300
+        // });
+        table.reload('demo', {
+          url: '/orderForm/term'
+          ,
+          page: {
+            curr: 1 //重新从第 1 页开始
+          }
+          ,where: {
+              id: demoReload.val()
+          }
+        });
+      },
       getCheckData: function(){ //获取选中数据
         var checkStatus = table.checkStatus('idTest')
         ,data = checkStatus.data;
