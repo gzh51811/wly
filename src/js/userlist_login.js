@@ -28,7 +28,7 @@ router.get('/:cate', async (ctx, next) => {
         break;
         case "dels":
            //$or 多个条件匹配   data 里的就是你传来的数据
-            let {username} = ctx.query;
+            var {username} = ctx.query;
             let data = [];
             username = JSON.parse(username)
 
@@ -38,12 +38,20 @@ router.get('/:cate', async (ctx, next) => {
                 data.push(obj)
             }
             console.log(data);
-           
-            
             let reg = await db.delete('user',{'$or':data});
             ctx.body = null;
             break;
             // let res = await db.delete('goodslist', { '$or': data })
+        case "tianjia":
+            var { username, sex, address, signature, profession, grade, regdata, oa, password } = ctx.query;
+            
+            //转换数据
+            oa = oa * 1;
+
+            let aer =await db.insert('user', { username, sex, address, signature, profession, grade, regdata, oa, password})
+            
+            ctx.body = oa;
+        break;
     }
 
 

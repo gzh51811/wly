@@ -31,7 +31,7 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:;">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img"> 贤心
+                       贤心
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
@@ -99,20 +99,20 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名：</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input username">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">昵称： </label>
+                    <label class="layui-form-label">签名： </label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" placeholder="请输入" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        <input type="text" name="username" placeholder="请输入" lay-verify="required" placeholder="" autocomplete="off" class="layui-input signature">
                     </div>
                 </div>
             
             <div class="layui-form-item">
                 <label class="layui-form-label">密码：</label>
                 <div class="layui-input-inline">
-                    <input type="password" name="password" lay-verify="pass"  autocomplete="off" class="layui-input">
+                    <input type="password" name="password" lay-verify="pass"  autocomplete="off" class="layui-input password">
                 </div>
                 <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
             </div>
@@ -120,28 +120,22 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">确认密码：</label>
                 <div class="layui-input-inline">
-                    <input type="password" name="password" lay-verify="pass"  autocomplete="off" class="layui-input">
+                    <input type="password" name="password" lay-verify="pass"  autocomplete="off" class="layui-input password2">
                 </div>
             </div>
 
-                <!-- <div class="layui-form-item _left">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">手机号：</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input shouji">
-                        </div>
-                    </div> -->
+        
                 <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">手机号：</label>
+                    <div class="">
+                        <label class="layui-form-label">住址：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input shouji">
+                            <input type="text"  class="layui-input shouji address">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">性别选择</label>
                         <div class="layui-input-inline">
-                            <select name="gender" lay-verify="">
+                            <select name="gender" lay-verify="" class="sex">
                                 <option value="男">男</option>
                                 <option value="女">女</option>
                             </select>
@@ -150,16 +144,23 @@
                 </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">生日：</label>
+                        <label class="layui-form-label">评分：</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="password" lay-verify="pass" autocomplete="off" class="layui-input shengri">
+                            <input type="text" name="password" lay-verify="title"  class="layui-input shengri grade">
                         </div>
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">邮箱地址：</label>
+                        <label class="layui-form-label">职业：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" lay-verify="title" class="layui-input shengri profession">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">添加时间：</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                            <input type="text" name="title" lay-verify="regdata" autocomplete="off" class="layui-input regdata" >
                         </div>
     
                 </div>       
@@ -167,7 +168,7 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">备注：</label>
                     <div class="layui-input-block">
-                        <textarea class="layui-textarea"></textarea>
+                        <textarea class="layui-textarea" placeholder="123123"></textarea>
                     </div>
                 </div>
     

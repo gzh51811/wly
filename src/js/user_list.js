@@ -48,7 +48,7 @@ $(function () {
         //页面渲染，自动layui自带js代码生成表格
         table.render({
             elem: '.layui-table'
-            , width: 892,
+            , width: 1000,
             height: 332,
             url: '/userlist_login/xuanran',
             id: 'idTest',
@@ -57,7 +57,7 @@ $(function () {
                 , { field: 'username', width: 80, title: '用户名' }
                 , { field: 'sex', width: 80, title: '性别', sort: true }
                 , { field: 'address', width: 80, title: '城市' }
-                , { field: 'signature', title: '签名', width: 80, }
+                , { field: 'signature', title: '签名', width: 150, }
                 , { field: 'profession', width: 80, title: '职业' }
                 , { field: 'grade', width: 80, title: '评分', sort: true }
                 , { field: 'regdata', title: '注册日期', minwidth: 100 }
@@ -142,6 +142,9 @@ $(function () {
             ]]
             , even: true
         });
+
+
+        //点击编辑信息
     });
 
 
