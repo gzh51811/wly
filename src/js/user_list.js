@@ -103,6 +103,11 @@ $(function () {
             active[type] ? active[type].call(this) : '';
         });
 
+        //点击条转添加页面
+        $('#tian').on('click',function(){
+            window.location.href = "../html/userAdd.html";
+        });
+
 
         //展示已知数据
         table.render({
