@@ -2,6 +2,7 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const koaBody = require('koa-body');
 
+
 // 创建路由
 var router = new Router(); 
 
@@ -11,6 +12,8 @@ const listitemRouter = require('./listitem');
 const listEditRouter = require('./listEdit');
 const goodslistRouter = require('./goodslist');
 const goodsAddRouter = require('./goodsAdd');
+const uploadRouter = require('./upload');
+
 
 router.use(koaBody({
     // 支持formdata
@@ -23,11 +26,12 @@ router.use(koaBody({
         keepExtensions:true,
         // 改文件名
         onFileBegin(filename,file){
+            // console.log(filename)
             // filename: 上传文件的原始名
             // file:文件信息对象
             //   * path:
 
-            // file.path = './uploads/'+filename
+            file.path = './uploads/'+file.name
         }
     }
 }));
@@ -37,5 +41,6 @@ router.use('/listitem',listitemRouter.routes())
 router.use('/listEdit',listEditRouter.routes())
 router.use('/goodslist',goodslistRouter.routes())
 router.use('/goodsAdd',goodsAddRouter.routes())
+router.use('/upload',uploadRouter.routes())
 
 module.exports = router;

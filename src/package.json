@@ -2,33 +2,18 @@
   "name": "src",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ysb.js",
   "directories": {
     "doc": "doc"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-<<<<<<< HEAD
-    "express": "^4.16.4",
     "http-server": "^0.11.1",
     "koa": "^2.7.0",
-=======
-    "http-server": "^0.11.1",
-    "koa": "^2.7.0",
-<<<<<<< HEAD
-    "koa-static": "^5.0.0",
-    "layui-src": "^2.4.5"
-=======
->>>>>>> d366c310824569001f475f625e79197ae4b3b8c2
     "koa-body": "^4.0.8",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "layui-src": "^2.4.5",
-    "mongodb": "^3.1.13"
-<<<<<<< HEAD
-=======
->>>>>>> 9e2f493f45c26dbf44bf1257098390a8bb4616cd
->>>>>>> d366c310824569001f475f625e79197ae4b3b8c2
+    "mongodb": "^3.1.13",
+    "bootstrap": "^4.3.1"
   },
   "devDependencies": {},
   "scripts": {

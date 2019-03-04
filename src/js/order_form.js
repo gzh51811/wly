@@ -1,4 +1,11 @@
 (()=>{
+  layui.use('element', function(){
+      var element = layui.element;
+      //监听导航点击
+      element.on('nav(filter)', function(elem){
+      console.log(elem); //得到当前点击的DOM对象
+      });
+    });
   layui.use('table', function(){
     var table = layui.table;
     //监听单元格编辑
