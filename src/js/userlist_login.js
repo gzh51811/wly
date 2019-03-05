@@ -47,11 +47,25 @@ router.get('/:cate', async (ctx, next) => {
             
             //转换数据
             oa = oa * 1;
-
             let aer =await db.insert('user', { username, sex, address, signature, profession, grade, regdata, oa, password})
-            
             ctx.body = oa;
         break;
+        case "bianji":
+            var { username } = ctx.query;
+            let aee = await db.find('user', {username})
+            ctx.body = aee;
+            break; 
+        case "gengai":
+            // var shu = [];
+            // arr = JSON.parse(arr)
+            
+            var { username, sex, address, signature, profession, grade, regdata, oa, password,oldname} = ctx.query;
+
+            
+            let ccc = await db.update('user', { username: oldname }, { $set: { username, sex, address, signature, profession, grade, regdata, oa, password}});
+            ctx.body = ccc;
+            break; 
+
     }
 
 
