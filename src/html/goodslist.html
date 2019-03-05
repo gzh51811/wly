@@ -9,129 +9,102 @@
   <link rel="stylesheet" href="../assert/layui/css/layui.css">
   <link rel="stylesheet" href="../css/goodslist.css">
 
-
 </head>
 <body class="layui-layout-body goodslist">
-<div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-    <div class="layui-logo">BG后台管理系统</div>
-    <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item">
-        <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
-        </a>
-        <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
-    </ul>
-  </div>
-
-  <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-  <div class="layui-side layui-bg-black">
-    <div class="layui-side-scroll">
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">商品管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="goodslist.html">商品列表</a></dd>
-            <dd><a href="listitem.html">商品分类</a></dd>
-            <dd><a href="goodsAdd.html">添加商品</a></dd>
-          </dl>
-        </li>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo">BG后台管理系统</div>
+      <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
-          <a href="javascript:;">用户管理</a>
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            贤心
+          </a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">用户列表</a></dd>
-            <dd><a href="javascript:;">添加用户</a></dd>
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">订单管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">订单列表</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item"><a href="">发布商品</a></li>
+        <li class="layui-nav-item"><a href="">退了</a></li>
       </ul>
     </div>
-  </div>
 
-  <!-- 内容主体区域 -->
-  <div class="layui-body gl-body">
-    <div style="padding: 15px;" class="gl-mainbody">
-        <div style="padding-bottom: 10px;" class="head-body clearfix">
-          <div class="head-left demoTable">
-            <a href="goodsAdd.html">
-              <button class="layui-btn layuiadmin-btn-role" data-type="add">
-              <i class="layui-icon layui-icon-add-circle-fine"></i>
-              添加
+    <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+    <div class="layui-side layui-bg-black">
+      <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+          <li class="layui-nav-item layui-nav-itemed">
+            <a class="" href="javascript:;">商品管理</a>
+            <dl class="layui-nav-child">
+              <dd class="layui-this"><a href="goodslist.html">商品列表</a></dd>
+              <dd><a href="listitem.html">商品分类</a></dd>
+              <dd><a href="goodsAdd.html">添加商品</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">用户管理</a>
+            <dl class="layui-nav-child">
+              <dd><a href="userlist.html">用户列表</a></dd>
+              <dd><a href="userAdd.html">添加用户</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">订单管理</a>
+            <dl class="layui-nav-child">
+              <dd><a href="order_form.html">订单列表</a></dd>
+            </dl>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 内容主体区域 -->
+    <div class="layui-body gl-body">
+      <div style="padding: 15px;" class="gl-mainbody">
+          <div style="padding-bottom: 10px;" class="head-body clearfix">
+            <div class="head-left demoTable">
+              <a href="goodsAdd.html">
+                <button class="layui-btn layuiadmin-btn-role" data-type="add">
+                <i class="layui-icon layui-icon-add-circle-fine"></i>
+                添加
+                </button>
+              </a>
+              <button class="layui-btn layuiadmin-btn-role" data-type="getCheckData">
+                <i class="layui-icon layui-icon-delete"></i>
+                删除
               </button>
-            </a>
-            <button class="layui-btn layuiadmin-btn-role" data-type="getCheckData">
-              <i class="layui-icon layui-icon-delete"></i>
-              删除
-            </button>
-          </div>
-          <div class="head-right">
-            <div class="head-title layui-select-title">
-              <input type="text" class="layui-input layui-unselect" placeholder="请输入标题">
             </div>
-              <div class="layui-select-title head-right-f">
-                <input type="text" placeholder="请选择分类" value="全部角色" readonly="" class="layui-input layui-unselect">
-                <i class="layui-edge"></i>
+            <div class="head-right">
+              <div class="demoTable">
+              搜索商品名称：
+                <div class="layui-inline">
+                  <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">搜索</button>
               </div>
+                <!-- <div class="layui-select-title head-right-f">
+                  <input type="text" placeholder="请选择分类" value="全部角色" readonly="" class="layui-input layui-unselect">
+                  <i class="layui-edge"></i>
+                </div> -->
+            </div>
           </div>
-        </div>
-         
-        <table class="layui-table"  lay-filter="demo"></table>
+           
+          <table class="layui-table"  lay-filter="demo"></table>
+      </div>
+    </div>
+     
+    <script type="text/html" id="barDemo">
+      <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+      <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+          
+    <div class="layui-footer">
+      <!-- 底部固定区域 -->
     </div>
   </div>
-   
-  <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-  </script>
-        
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-  </div>
-</div>
-<script src="../assert/lib/jquery-1.10.1.min.js"></script>
-<script src="../assert/layui/layui.js"></script>
-<script src="../js/goodslist.js"></script>
-<script>
-//JavaScript代码区域
-layui.use(['element','table'], function(){
-  var element = layui.element;
-  var table = layui.table;
-  // //表格模块
-  table.render({
-    elem: '#demo'
-    ,height: '400px'
-    ,url:'/goodslist'
-    ,count: 100
-    ,limit: 10
-    ,limits: [10, 20, 30, 40, 50]
-    ,cols: [[
-      {type:'checkbox'}
-      ,{field:'id', width:80, height:55, title: 'ID', sort: true}
-      ,{field:'name', width:200, height:55, title: '商品名称'}
-      ,{field:'type', width:80, height:55, title: '分类', sort: true}
-      ,{field:'price', width:120, height:55, title: '价格(原价)',sort: true}
-      ,{field:'now_price', width:120, height:55, title: '价格(现价)',sort: true}
-      ,{field:'total', width:80, height:55, title: '库存', minWidth: 100,sort: true}
-      ,{field:'state', width:80, height:55, title: '状态', sort: true}
-      ,{field:'time', width:100, height:55, title: '添加时间', sort: true}
-      ,{field:'classify', height:55, title: '操作',toolbar: '#barDemo'}
-    ]]
-    ,page: true
-  });
-});
-</script>
+  <script src="../assert/lib/jquery-1.10.1.min.js"></script>
+  <script src="../assert/layui/layui.js"></script>
+  <script src="../js/goodslist.js"></script>
 </body>
 </html>

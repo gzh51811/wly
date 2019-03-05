@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>商品分类</title>
+  <link rel="stylesheet" type="text/css" href="../css/common.css" />
   <link rel="stylesheet" href="../assert/layui/css/layui.css">
 </head>
 <body class="layui-layout-body">
@@ -33,34 +34,37 @@
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">商品管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">商品列表</a></dd>
-                            <dd><a href="javascript:;">商品分类</a></dd>
-                            <dd><a href="javascript:;">添加商品</a></dd>
+                            <dd><a href="goodslist.html">商品列表</a></dd>
+                            <dd class="layui-this"><a href="javascript:;">商品分类</a></dd>
+                            <dd><a href="goodsAdd.html">添加商品</a></dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item">
+                    <li class="layui-nav-item layui-nav-itemed">
                         <a href="javascript:;">用户管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">用户列表</a></dd>
-                            <dd><a href="javascript:;">添加用户</a></dd>
+                            <dd><a href="userlist.html">用户列表</a></dd>
+                            <dd><a href="userAdd.html">添加用户</a></dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item">
+                    <li class="layui-nav-item layui-nav-itemed">
                         <a href="javascript:;">订单管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">订单列表</a></dd>
+                            <dd><a href="order_form.html">订单列表</a></dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item"><a href="">发布商品</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="layui-body">
-
+            <span class="layui-breadcrumb">
+                  <a href="javascript:;">首页</a>
+                  <a href="javascript:;">商品管理</a>
+                  <a><cite>商品分类</cite></a>
+                </span>
             <!-- 内容主体区域 -->
-            <div style="padding: 15px;">
-
+            <div style="padding: 15px;margin-left:30px;">
+                
                 <div class="layui-btn-group demoTable">
                     <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
                     <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>

@@ -41,12 +41,5 @@ router.get('/:cate',async (ctx,next)=>{
     }
     
 })
-// router.post('/',async (ctx,next)=>{
-//     // 解构
-//     let {id} = ctx.query;
-//     id=id*1;
-//     let res = await db.find('classifiedItemForm',{id});
-//     // res = res;
-//     ctx.body=res;
-// })
+
 module.exports = router;

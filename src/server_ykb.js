@@ -10,6 +10,7 @@ const routers = require('./api/routers');
 const app = new Koa();//app.context
 
 
+
 // 创建静态资源服务
 app.use(static('./'));
 // 处理status为404或null时，完善response信息

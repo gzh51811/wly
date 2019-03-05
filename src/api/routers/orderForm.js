@@ -25,40 +25,46 @@ router.put('/',async (ctx,next)=>{
 
     // 存入数据库
 })
-router.get('/',async (ctx,next)=>{
+router.get('/:cate',async (ctx,next)=>{
+    let {cate} = ctx.params;
+    switch(cate){
+        case "all" :
+            var {page,limit}=ctx.query;
+            var all = (page-1)*limit;
+            limit=limit*1;
+            console.log(all,limit);
+            var res1 = await db.find('orderForm');
+            var res2 = await db.find2('orderForm',{},all,limit);
+
+            ctx.body={
+                "code": 0,
+                "msg": "",
+                "count": res1.length,
+                "data": res2
+            }
+            // ctx.body=[];
+            break;
+        case "term":
+        console.log(ctx.query)
+            var {page,limit,id}=ctx.query;
+            var all = (page-1)*limit;
+            limit=limit*1;
+            console.log(all,limit);
+            var res1 = await db.find('orderForm');
+            var res2 = await db.find2('orderForm',{id},all,limit);
+
+            // res = res;
+            ctx.body={
+                "code": 0,
+                "msg": "",
+                "count": res1.length,
+                "data": res2
+            }
+            break;
+    }
     // 解构
     // let {username,password,mdl} = ctx.request.body;
-    let {page,limit}=ctx.query;
-    let all = (page-1)*limit;
-    limit=limit*1;
-    console.log(all,limit);
-    let res1 = await db.find('orderForm');
-    let res2 = await db.find2('orderForm',{},all,limit);
-
-    // res = res;
-    ctx.body={
-        "code": 0,
-        "msg": "",
-        "count": res1.length,
-        "data": res2
-    }
-    // if(res){
-    //     ctx.body = {
-    //         _id:res._id,
-    //         username:res.username,
-    //         gender:res.gender,
-    //         regtime:res.regtime
-    //     }
-    // }else{
-    //     ctx.body = {
-    //         code:100,
-    //         msg:'fail'
-    //     }
-    // }
-
     
-
-    // 存入数据库
 })
 router.post('/',async (ctx,next)=>{
     // 解构

@@ -6,35 +6,35 @@ const db = require('../db');
 var router = new Router();
 
 
-/**
- * ctx
- */
-router.post('/',async (ctx,next)=>{
-    // 解构
-    let {username,password,mdl} = ctx.request.body;
 
-    let res = await db.find('user',{username,password});
-    console.log(res)
-    res = res[0];
-
-    if(res){
-        ctx.body = {
-            _id:res._id,
-            username:res.username,
-            gender:res.gender,
-            regtime:res.regtime
-        }
-    }else{
-        ctx.body = {
-            code:100,
-            msg:'fail'
-        }
+router.get('/:cate',async (ctx,next)=>{
+    let {cate} = ctx.params;
+    switch(cate){
+        case "find":
+            // 解构
+            var {id} = ctx.query;
+            id=id*1;
+            let res = await db.find('goodslist',{id});
+            // res = res;
+            ctx.body = res;
+            break;
+        // case "update":
+        //     // 解构
+        //     var {type,description,id,joinTime}=ctx.query;
+        //     id=id*1;
+        //     let res1 = await db.update('classifiedItemForm',{id},{$set:{description,type,joinTime}});
+        //     // res = res;
+        //     ctx.body = res1;
+        //     break;
+        // case "insert":
+        //     var {type,description,joinTime}=ctx.query;
+        //     let res3 = await db.find('classifiedItemForm');
+        //     let res2 = await db.insert('classifiedItemForm',{id:(10000+res3.length),type,description,joinTime});
+        //     // res = res;
+        //     ctx.body = res2;
+        //     break;
     }
-
     
-
-    // 存入数据库
-
 })
 
 module.exports = router;
