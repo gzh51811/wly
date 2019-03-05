@@ -17,7 +17,7 @@
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="yonghu">
                         <img src="http://t.cn/RCzsdCq" class="layui-nav-img"> 贤心
                     </a>
                     <dl class="layui-nav-child">
@@ -30,7 +30,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="">退了</a>
+                    <a href="javascript:;" class="tuichu">退了</a>
                 </li>
             </ul>
         </div>
@@ -43,23 +43,23 @@
                         <a class="" href="javascript:;">商品管理</a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;">商品列表</a>
+                                <a href="goodslist.html">商品列表</a>
                             </dd>
                             <dd>
-                                <a href="javascript:;">商品分类</a>
+                                <a href="listitem.html">商品分类</a>
                             </dd>
                             <dd>
-                                <a href="javascript:;">添加商品</a>
+                                <a href="goodsAdd.html">添加商品</a>
                             </dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">用户管理</a>
                         <dl class="layui-nav-child">
-                            <dd>
+                            <dd class="lb">
                                 <a href="../html/userlist.html">用户列表</a>
                             </dd>
-                            <dd>
+                            <dd class="tj">
                                 <a href="../html/userAdd.html">添加用户</a>
                             </dd>
                         </dl>
@@ -68,13 +68,11 @@
                         <a href="javascript:;">订单管理</a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;">订单列表</a>
+                                <a href="order_form.html">订单列表</a>
                             </dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item">
-                        <a href="">发布商品</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -82,9 +80,9 @@
         <div class="layui-body">
             <span class="layui-breadcrumb">
                 <a href="">首页</a>
-                <a href="">商品管理</a>
+                <a href="">用户管理</a>
                 <a>
-                    <cite>商品列表</cite>
+                    <cite>用户列表</cite>
                 </a>
             </span>
             <!-- 内容主体区域 -->
@@ -110,6 +108,7 @@
             <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del"><i class="layui-icon"></i></button>     
         </script>
     <script src="../assert/lib/jquery-1.10.1.min.js"></script>
+    <script src="../js/cookie.js"></script>
     <script src="../assert/layui/layui.js"></script>
     <script src="../js/user_list.js"></script>
     <script>
