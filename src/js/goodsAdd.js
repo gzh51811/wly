@@ -7,6 +7,7 @@ $(document).ready(function(){
     let selectTitle;
     let text = $(".layui-input-block>textarea")[0];
     let data ;
+    let realFile = {};
     //JavaScript代码区域
     layui.use(['element','upload','form'], function(){
       var element = layui.element;
@@ -18,29 +19,15 @@ $(document).ready(function(){
         upload.render({
             elem: '#test2'
             ,url: '/upload'
-            ,auto: false
-            ,bindAction: '#btnConfirm'
+            // ,auto: false
+            // ,bindAction: '#btnConfirm'
             ,multiple: false
             ,before: function(obj){
               //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
-                    var time = new Date();
-                    time= time.toLocaleDateString();
+                    realFile=file;
                     $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img" style="border:1px solid #ccc;margin-right:10px;">')
-                    // username=狼牙棒&price=998&now_price=599&interest=&file=&total=10000&desc=可供想象的大棒
-                    var xhr = new XMLHttpRequest();
-                    xhr.onload = function(){
-                        console.log(xhr.responseText)
-                    }
-                    try{
-                        data = `name=${user.value}&price=${pri.value}&now_price=${nowPri.value}&file=${file.name}&total=${total.value}&description=${text.value}&${query}&type=${selectTitle.value}&time=${time}`;
-                    }catch{
-                        let _layui = document.getElementsByClassName("layui-this")[0];
-                        data = `name=${user.value}&price=${pri.value}&now_price=${nowPri.value}&file=${file.name}&total=${total.value}&description=${text.value}&${query}&type=${_layui.innerHTML}&time=${time}&state=1`;  
-                    }
                     
-                    xhr.open("put",`/upload?${data}`)
-                    xhr.send(null);
                 });
             }
             ,done: function(res){
@@ -77,11 +64,22 @@ $(document).ready(function(){
 
     //确认按钮
     btnConfirm.onclick=function(){
+        var time = new Date();
+        time= time.toLocaleDateString();
+        // username=狼牙棒&price=998&now_price=599&interest=&file=&total=10000&desc=可供想象的大棒
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            console.log(xhr.responseText)
+        }
+        try{
+            data = `name=${user.value}&price=${pri.value}&now_price=${nowPri.value}&file=${realFile.name}&total=${total.value}&description=${text.value}&${query}&type=${selectTitle.value}&time=${time}`;
+        }catch{
+            let _layui = document.getElementsByClassName("layui-this")[0];
+            data = `name=${user.value}&price=${pri.value}&now_price=${nowPri.value}&file=${realFile.name}&total=${total.value}&description=${text.value}&${query}&type=${_layui.innerHTML}&time=${time}&state=1`;  
+        }
+        
+        xhr.open("put",`/upload?${data}`)
+        xhr.send(null);
         location.href="goodslist.html"
     }
-        
-
-    
-    
-   
 });

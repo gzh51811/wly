@@ -37,7 +37,7 @@
     table.render({
       elem: '.layui-table'
       ,height: '400px'
-      ,url:'/goodslist'
+      ,url:'/goodslist/all'
       ,count: 100
       ,limit: 10
       ,limits: [10, 20, 30, 40, 50]
@@ -57,6 +57,25 @@
       ,page: true
     });
     var $ = layui.$, active = {
+      reload: function(){
+        var demoReload = $('#demoReload');
+        //执行重载
+        // table.reload('idTest', {
+        //   url: '/api/table/search'
+        //   ,where: {} //设定异步数据接口的额外参数
+        //   //,height: 300
+        // });
+        table.reload('idTest', {
+          url: '/goodslist/filter'
+          ,
+          page: {
+            curr: 1 //重新从第 1 页开始
+          }
+          ,where: {
+              name: demoReload.val()
+          }
+        });
+      },
       getCheckData: function(){ //获取选中数据
         var checkStatus = table.checkStatus('idTest')
         ,data = checkStatus.data;
@@ -101,9 +120,22 @@
       var type = $(this).data('type');
       active[type] ? active[type].call(this) : '';
     });
-
-
   });
 
-
+  //搜索
+  var search = document.querySelector(".search");
+  var d = new Date();
+  // search.oninput = function(){
+  //   var d2 = new Date();
+  //   if((d2-d)>500){
+  //     var name = search.value;
+  //     var xhr = new XMLHttpRequest();
+  //     xhr.onload = function(){
+  //       console.log(xhr.responseText)
+  //     }
+  //     xhr.open("get","/goodslist/filter?name="+name);
+  //     xhr.send()
+  //   }
+  //   d=d2;
+  // }
 })()
