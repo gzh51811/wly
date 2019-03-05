@@ -6,39 +6,73 @@ var router = new Router();
 
 
 //页面渲染
-router.post('/', async (ctx, next) => {
-    // 解构
-    let {oa} = ctx.request.body;
-    //转换
-    oa = oa*1;
-    //查询
-    let res = await db.find('1811', {oa});
-    if (res) {
-        //把查询到的权限为普通用户的信息返回前端
-        ctx.body= res;
-    } else {
-        ctx.body = {
-            code: 100,
-            msg: 'fail'
-        }
+router.get('/:cate', async (ctx, next) => {
+    //结构
+    let { cate } = ctx.params;
+    switch (cate) {
+        case "xuanran":
+            let res = await db.find('user', { oa: 0 });
+            if (res) {
+                //把查询到的权限为普通用户的信息返回前端
+                ctx.body = {
+                    "code": 0,
+                    "msg": "",
+                    "data": res
+                }
+            } else {
+                ctx.body = {
+                    code: 100,
+                    msg: 'fail'
+                }
+            }
+        break;
+        case "dels":
+           //$or 多个条件匹配   data 里的就是你传来的数据
+            var {username} = ctx.query;
+            let data = [];
+            username = JSON.parse(username)
+
+            for (var i = 0; i < username.length; i++) {
+                let obj = {};
+                obj.username = username[i]
+                data.push(obj)
+            }
+            console.log(data);
+            let reg = await db.delete('user',{'$or':data});
+            ctx.body = null;
+            break;
+            // let res = await db.delete('goodslist', { '$or': data })
+        case "tianjia":
+            var { username, sex, address, signature, profession, grade, regdata, oa, password } = ctx.query;
+            
+            //转换数据
+            oa = oa * 1;
+
+            let aer =await db.insert('user', { username, sex, address, signature, profession, grade, regdata, oa, password})
+            
+            ctx.body = oa;
+        break;
     }
 
 
-
-
-
-
+    // 解构
+    // let {oa} = ctx.request.body;
+    //转换
+    // oa = oa*1;
+    //查询
+   
 })
 
 //删除功能
-router.get('/', async (ctx, next) => {
+router.post('/', async (ctx, next) => {
+
     // 解构
     //get传来的位置就在query 而post发送过来的在request下body
-    let {username} = ctx.query;
+    let {username} = ctx.request.body;
     //查询删除
     // console.log(username);
-    let res = await db.delete('1811',{username});
-        ctx.body = res;
+    let res = await db.delete('user',{username});
+        ctx.body =res;
 })
 module.exports = router;
 

@@ -1,90 +1,153 @@
-$(function(){
-    //发送ajax请求查询数据
-    let xhr = new XMLHttpRequest();
-    xhr.onload = () => {
+$(function () {
 
-        if (xhr.status == 200) {
-            let res = JSON.parse(xhr.responseText);
-            var arr = res.map(function (item) {
-                return ` <tr data-index="0" class="cr">    
-                                                    <td data-field="1" data-key="8-0-1" class="layui-table-col-special">
-                                                        <div class="layui-table-cell laytable-cell-8-0-1 laytable-cell-checkbox">
-                                                            <input type="checkbox" name="layTableCheckbox" lay-skin="primary">
-                                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                                                                <i class="layui-icon layui-icon-ok"></i>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="city" data-key="8-0-4" class="yonghu">${item.username}</td>
-                                                    <td data-field="id" data-key="8-0-2" class="">
-                                                        <div class="layui-table-cell laytable-cell-8-0-2 ">${item.sex}</div>
-                                                    </td>
-                                                    <td data-field="username" data-key="8-0-3" class="">
-                                                        <div class="layui-table-cell laytable-cell-8-0-3 _chengshi">${item.address}</div>
-                                                    </td>                                                                            
-                                                    <td data-field="wealth" data-key="8-0-5" data-minwidth="120" class="qianming">
-                                                        <div class="layui-table-cell laytable-cell-8-0-5">${item.signature}</div>
-                                                    </td>
-                                                    <td data-field="sex" data-key="8-0-6" class="zhiye">
-                                                        <div class="layui-table-cell laytable-cell-8-0-6">
-                                                            <input type="checkbox" name="sex" lay-skin="switch" lay-filter="test-table-sexDemo" class="zhiye">
-                                                            <span>${item.profession}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="lock" data-key="8-0-7" data-content="" class="pingfen">
-                                                        <div class="layui-table-cell laytable-cell-8-0-7">
-                                                            <input type="checkbox" name="lock" title="评分" lay-filter="test-table-lockDemo">
-                                                                <span>${item.grade}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="lock" data-key="8-0-7" data-content="" class="_data">
-                                                        <div class="layui-table-cell laytable-cell-8-0-7">
-                                                            <input type="checkbox" name="lock"  lay-filter="test-table-lockDemo">
-                                                            <span>${item.regdata}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td data-field="10" data-key="1-0-10" align="center" data-off="true" class="layui-table-col-special">
-                                                        <div class="layui-table-cell laytable-cell-1-0-10">
-                                                            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                                                            <a class="layui-btn layui-btn-danger layui-btn-xs dl" lay-event="del">删除</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>`;
-            }).join('');
+    layui.use('table', function () {
+        var table = layui.table;
 
-            $('#tbd').html(arr);
+        //监听表格复选框选择
+        table.on('checkbox(demo)', function (obj) {
+            // console.log(obj.data);
+            //能打印每条被选中的数据
+        });
 
-            //删除功能
-            $('.dl').on('click',function(){
-                var dl =  confirm('您真的不要我么？');
-                //得到用户名
-                var x = $(this).parent().parent().parent().children('.yonghu').html();
-               if(dl){
+
+        //监听工具条
+        table.on('tool(demo)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'detail') {
+                layer.msg('ID：' + data.username + ' 的查看操作');
+
+
+            } else if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    layer.close(index);
                     // 发送ajax请求
-                   let xhr = new XMLHttpRequest();
-                   xhr.onload = () => {
-                       if (xhr.status == 200) {
-                           let fanhui = JSON.parse(xhr.responseText);
-                           console.log(fanhui);
-                       }
-                   }
-                   xhr.open('get', '/userlist_login?username='+x, true);
-                   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                   xhr.send();
+                    //删除功能
+                    var xhr = new XMLHttpRequest();
+                    xhr.onload = () => {
+                        if (xhr.status == 200) {
+                            let fanhui = JSON.parse(xhr.responseText);
+                            console.log(fanhui);
+                            location.reload();//刷新页面
+                        }
+                    }
+                    xhr.open('post', '/userlist_login', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                    var datas = 'username=' + data.username;
+                    xhr.send(datas);
 
 
-               }
-            });
+                });
+            } else if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>' + JSON.stringify(data))
 
-           
+            }
+        });
 
-        }
-    }
-    xhr.open('post', '/userlist_login', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    let data = 'oa=0';
-    xhr.send(data);
+        //页面渲染，自动layui自带js代码生成表格
+        table.render({
+            elem: '.layui-table'
+            , width: 1000,
+            height: 332,
+            url: '/userlist_login/xuanran',
+            id: 'idTest',
+            cols: [[
+                { type: 'checkbox', width: 80, }
+                , { field: 'username', width: 80, title: '用户名' }
+                , { field: 'sex', width: 80, title: '性别', sort: true }
+                , { field: 'address', width: 80, title: '城市' }
+                , { field: 'signature', title: '签名', width: 150, }
+                , { field: 'profession', width: 80, title: '职业' }
+                , { field: 'grade', width: 80, title: '评分', sort: true }
+                , { field: 'regdata', title: '注册日期', minwidth: 100 }
+                , { fixed: "right", align: "center", width: 120, toolbar: "#barDemo" }
+            ]]
+            , page: true
+        });
 
 
-    
+        //**点击删除获取到所有被选中的用户名
+        var $ = layui.$, active = {
+            getCheckData: function () { //获取选中数据
+                var checkStatus = table.checkStatus('idTest')
+                    , data = checkStatus.data;
+                var aaa = confirm('你确定要删除所选内容么');
+                if(aaa){
+                    // layer.alert(JSON.stringify(data));
+                    var a = [];
+                    for (var i = 0; i < data.length; i++) {
+                        a.push(data[i].username);
+                    }
+                    var arr = JSON.stringify(a);
+                    // console.log(a);
+                    //删除多个
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.onload = () => {
+                        if (xhr.status == 200) {
+                            location.reload();//刷新页面
+                        }
+                    }
+                    xhr.open('get', '/userlist_login/dels?username=' + arr, true);
+
+                    xhr.send(null);
+                }
+                
+            }
+        };
+
+        $('.layui-btn-group .layui-btn').on('click', function () {
+
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //点击条转添加页面
+        $('#tian').on('click',function(){
+            window.location.href = "../html/userAdd.html";
+        });
+
+
+        //展示已知数据
+        table.render({
+            elem: '#demo'
+            , width: 1221
+            , url: '/user' //数据接口
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.count, //解析数据长度
+                    "data": res.data //解析数据列表
+                };
+            }
+            , request: {
+                pageName: 'page'
+                , limitName: 'qty'
+            }
+            , page: true //开启分页
+            , qty: 10
+            , cols: [[ //标题栏
+                { type: 'checkbox' }
+                , { field: '_id', title: 'ID', width: 250, sort: true }
+                , { field: 'phone', title: '手机号', width: 120 }
+                , { field: 'nickname', title: '昵称', width: 80 }
+                , { field: 'gender', title: '性别', width: 60 }
+                , { field: 'birthday', title: '生日', width: 120 }
+                , { field: 'email', title: '邮箱', width: 180 }
+                , { field: 'remark', title: '描述', width: 130 }
+                , { field: 'regtime', title: '注册时间', width: 100 }
+                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120 }
+            ]]
+            , even: true
+        });
+
+
+        //点击编辑信息
+    });
+
+
+
+
 });
