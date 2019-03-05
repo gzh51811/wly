@@ -3,6 +3,7 @@ $(function () {
     layui.use('table', function () {
         var table = layui.table;
 
+
         //监听表格复选框选择
         table.on('checkbox(demo)', function (obj) {
             // console.log(obj.data);
@@ -39,8 +40,10 @@ $(function () {
 
 
                 });
+                //编辑用户信息
             } else if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>' + JSON.stringify(data))
+                // layer.alert('编辑行：<br>' + JSON.stringify(data))
+                window.open("../html/useradd_bianji.html?username="+data.username);
 
             }
         });
@@ -143,10 +146,7 @@ $(function () {
             , even: true
         });
 
-
-        //点击编辑信息
     });
-
 
 
 

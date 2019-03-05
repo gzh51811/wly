@@ -1,6 +1,5 @@
 $(function(){
 
-
 //layui模板自带
 layui.use(['form', 'layedit','laydate'], function(){
   var form = layui.form
@@ -67,8 +66,19 @@ layui.use(['form', 'layedit','laydate'], function(){
     }
 
 
-
   });
- 
+
+
+  //发送ajax请求
+  var xhr = new XMLHttpRequest();
+  xhr.onload = () => {
+    if (xhr.status == 200) {
+      // location.reload();//刷新页面
+      alert('修改成功');
+    }
+  }
+  xhr.open('get', '/userlist_login/bianji?username=' + title, true);
+
+  xhr.send(null);
 });
 });
