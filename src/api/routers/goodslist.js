@@ -59,12 +59,12 @@ router.put('/',async(ctx,next)=>{
     num = JSON.parse(num)
 
       for(var i=0;i<num.length;i++){
-        let obj = {};
-        obj.id = num[i]
-          data.push(obj)
+            let obj = {};
+            obj.id = num[i]
+            data.push(obj)
         }
       
-    let res = await db.delete('goodslist',{'$or':data})
+    let res = await db.delete('goodslist',{'$or':data});
     ctx.body = null;
 })
 module.exports = router;
