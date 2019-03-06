@@ -143,17 +143,5 @@ $(function(){
                                         
             xhr.send(null);
                               
-            
-            // //获取cookie渲染登录用户
-            // var ck = document.cookie;
-            // var arr = ck.split('=')[1];
-            // var quanxian = arr.split(';')[0];
-            // var oa = arr.split(';')[1];
-            //   console.log(quanxian,oa);
-
-            // $('.yonghu').html(quanxian);
-            
-
-   
 
 });

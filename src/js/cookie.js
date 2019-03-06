@@ -44,12 +44,33 @@ var cookie = {
 }
     var tuichu = document.getElementsByClassName('tuichu');
     var yonghu = document.getElementsByClassName('yonghu');
+    var lb = document.getElementsByClassName('lb');
+    var tj = document.getElementsByClassName('tj');
 
     var yonghuming = cookie.get('username');
     var oa = cookie.get('oa');
     console.log(yonghuming,oa);
 
     yonghu[0].innerHTML = yonghuming;
+    
+
+
+
+    if(oa>0){
+        lb[0].setAttribute("style", "display:block;");
+        tj[0].innerHTML = '添加用户';
+    }else{
+        tj[0].setAttribute("href", "useradd_bianji.html");
+        tj[0].onclick = function () {
+           
+    
+            window.open("../html/useradd_bianji.html?username=" + yonghuming);
+
+        };
+        lb[0].setAttribute("style", "display:none;");
+        tj[0].innerHTML = '更改信息';
+    
+    };
 
 
 tuichu[0].onclick = function(){

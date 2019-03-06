@@ -65,6 +65,14 @@ router.get('/:cate', async (ctx, next) => {
             let ccc = await db.update('user', { username: oldname }, { $set: { username, sex, address, signature, profession, grade, regdata, oa, password}});
             ctx.body = ccc;
             break; 
+        case "chu":
+           
+            var { username} = ctx.query;
+
+
+            let chu = await db.find('user', { username });
+            ctx.body = chu;
+            break; 
 
     }
 
