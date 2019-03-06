@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 
-const db = require('./_index');
+const db = require('../db');
 
 // 创建路由
 var router = new Router();

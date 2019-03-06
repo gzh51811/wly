@@ -13,6 +13,8 @@ const listEditRouter = require('./listEdit');
 const goodslistRouter = require('./goodslist');
 const goodsAddRouter = require('./goodsAdd');
 const uploadRouter = require('./upload');
+const loginRouter = require('./login');
+const userlistRouter = require('./userlist_login');
 
 
 router.use(koaBody({
@@ -42,5 +44,7 @@ router.use('/listEdit',listEditRouter.routes())
 router.use('/goodslist',goodslistRouter.routes())
 router.use('/goodsAdd',goodsAddRouter.routes())
 router.use('/upload',uploadRouter.routes())
+router.use('/login', loginRouter.routes())
+router.use('/userlist_login', userlistRouter.routes())
 
 module.exports = router;

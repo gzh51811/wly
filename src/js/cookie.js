@@ -60,13 +60,12 @@ var cookie = {
         lb[0].setAttribute("style", "display:block;");
         tj[0].innerHTML = '添加用户';
     }else{
-        tj[0].setAttribute("href", "useradd_bianji.html");
-        tj[0].onclick = function () {
+        tj[0].setAttribute("href", `useradd_bianji.html?username=${yonghuming}`);
+        // tj[0].onclick = function () {
            
-    
-            window.open("../html/useradd_bianji.html?username=" + yonghuming);
+        //     window.open("../html/useradd_bianji.html?username=" + );
 
-        };
+        // };
         lb[0].setAttribute("style", "display:none;");
         tj[0].innerHTML = '更改信息';
     
